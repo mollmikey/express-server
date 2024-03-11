@@ -11,19 +11,18 @@ server.get('/compliment', (req, res) => {
   })
 })
 
-// server.get('/secrets', (req, res) => {
-//   res.sendFile(Path.resolve('./server/secrets.json'))
-// })
-
 server.get('/secrets', (req, res) => {
-  const secretType = req.query.type
+  let secretType = req.query.type
 
   if (secretType === 'mystical') {
     res.sendFile(Path.resolve('./server/mystical-secrets.json'))
   } else if (secretType === 'kitchen') {
     res.sendFile(Path.resolve('./server/kitchen-secrets.json'))
+  } else if (secretType === 'lizards') {
+    res.sendStatus(404)
   } else {
     res.sendFile(Path.resolve('./server/secrets.json'))
   }
 })
+
 export default server
